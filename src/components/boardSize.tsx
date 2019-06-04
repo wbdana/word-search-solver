@@ -3,18 +3,18 @@ import * as React from 'react';
 export interface IProps {
     x: number;
     y: number;
-    onXChange: (event: any) => void;
-    onYChange: (event: any) => void;
+    setX: (event: any) => void;
+    setY: (event: any) => void;
 };
 
-function BoardSize({ x, y, onXChange, onYChange }: IProps) {
+function BoardSize({ x, y, setX, setY }: IProps) {
 
     const handleXChange = (event: any) => {
-        onXChange(event.target.value);
+        setX(event.target.value);
     };
 
     const handleYChange = (event: any) => {
-        onYChange(event.target.value);
+        setY(event.target.value);
     };
 
     return (

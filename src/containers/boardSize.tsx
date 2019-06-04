@@ -15,8 +15,8 @@ export function mapStateToProps({ board }: IStoreState) {
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.IBoardSizeAction>) {
     return {
-        onXChange: (payload: number) => dispatch(actions.setX(payload)),
-        onYChange: (payload: number) => dispatch(actions.setY(payload)),
+        setX: (payload: number) => dispatch(actions.setX(payload)),
+        setY: (payload: number) => dispatch(actions.setY(payload)),
     };
 };
 

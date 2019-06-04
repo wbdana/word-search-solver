@@ -1,7 +1,6 @@
-// import { IBoardSizeAction } from '../actions/boardSize';
-// import { IBoardSizeState } from '../types/boardSize';
 import { IBoardAction } from '../actions/board';
 import { IBoardState } from '../types/board';
+import { initialState } from '../constants/board';
 import {
     SET_X,
     SET_Y,
@@ -10,18 +9,11 @@ import {
 
 } from '../constants/letters';
 
-const initialState: IBoardState = {
-    size: {
-        x: 1,
-        y: 1,
-    },
-    letters: [],
-};
 
 export function boardReducer(
-    state = initialState,  // TODO Make this
-    action: IBoardAction, // TODO Make this
-): IBoardState { // TODO Make this
+    state = initialState,
+    action: IBoardAction,
+): IBoardState {
     const { payload, type } = action;
     switch(type) {
         case SET_X:
