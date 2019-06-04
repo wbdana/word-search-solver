@@ -4,10 +4,10 @@ import { IStoreState } from '../types';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-export function mapStateToProps({ letters }: IStoreState) {
-    return {
-        letters,
-    };
+export function mapStateToProps() {
+    // return {
+    //     letters,
+    // };
 };
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.ILettersAction>) {

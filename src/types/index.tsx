@@ -1,9 +1,11 @@
-import { IBoardSizeState } from './boardSize';
-import { ILetterState } from './letters';
+import { IBoardState } from './board';
+// import { IBoardSizeState } from './boardSize';
+// import { ILetterState } from './letters';
 import { ISolveOptionsState } from './solveOptions';
 
 export interface IStoreState {
-    boardSize: IBoardSizeState;
-    letters: ILetterState[];
+    board: IBoardState;
+    // boardSize: IBoardSizeState;
+    // letters: ILetterState[];
     solveOptions: ISolveOptionsState;
 };

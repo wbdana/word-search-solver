@@ -4,8 +4,9 @@ import { IStoreState } from '../types';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-export function mapStateToProps({ boardSize }: IStoreState) {
-    const { x, y } = boardSize;
+export function mapStateToProps({ board }: IStoreState) {
+    const { size } = board;
+    const { x, y } = size;
     return {
         x,
         y,
