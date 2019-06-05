@@ -6,8 +6,11 @@ export type SET_X = typeof SET_X;
 export const SET_Y = 'SET_Y';
 export type SET_Y = typeof SET_Y;
 
-export const SET_LETTERS = 'SET_LETTERS';
-export type SET_LETTERS = typeof SET_LETTERS;
+export const SET_LETTER = 'SET_LETTER';
+export type SET_LETTER = typeof SET_LETTER;
+
+// export const SET_LETTERS = 'SET_LETTERS';
+// export type SET_LETTERS = typeof SET_LETTERS;
 
 export const initialState: IBoardState = {
     size: {

@@ -9,6 +9,7 @@ export interface IProps {
 
 function BoardSize({ x, y, setX, setY }: IProps) {
 
+    // TODO Types for these callbacks
     const handleXChange = (event: any) => {
         setX(event.target.value);
     };

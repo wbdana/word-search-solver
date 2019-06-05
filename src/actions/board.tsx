@@ -1,6 +1,9 @@
 import * as boardConstants from '../constants/board';
 import { IBoardState } from '../types/board';
-import { ILetterState } from '../types/board';
+import {
+    ILetterState,
+    ISetLetterPayload,
+} from '../types/board';
 
 export interface ISetX {
     type: boardConstants.SET_X;
@@ -12,15 +15,21 @@ export interface ISetY {
     payload: number;
 };
 
-export interface ISetLetters {
-    type: boardConstants.SET_LETTERS;
-    payload: ILetterState[];
+export interface ISetLetter {
+    type: boardConstants.SET_LETTER;
+    payload: ISetLetterPayload;
 };
+
+// export interface ISetLetters {
+//     type: boardConstants.SET_LETTERS;
+//     payload: ILetterState[];
+// };
 
 export type IBoardAction =
     ISetX |
     ISetY |
-    ISetLetters
+    ISetLetter
+    // ISetLetters
 ;
 
 export function setX(payload: number): ISetX {
@@ -37,9 +46,16 @@ export function setY(payload: number): ISetY {
     };
 };
 
-export function setLetters(payload: ILetterState[]): ISetLetters {
+export function setLetter(payload: ISetLetterPayload): ISetLetter {
     return {
-        type: boardConstants.SET_LETTERS,
+        type: boardConstants.SET_LETTER,
         payload,
     };
 };
+
+// export function setLetters(payload: ILetterState[]): ISetLetters {
+//     return {
+//         type: boardConstants.SET_LETTERS,
+//         payload,
+//     };
+// };

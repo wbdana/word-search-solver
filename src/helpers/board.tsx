@@ -1,4 +1,4 @@
-import { idOrNull } from '../types/board';
+import { idOrNull, ILetterState } from '../types/board';
 import {
     IGetLetterObject,
     IGetCardinalDirections,
@@ -15,6 +15,21 @@ export function createLetters(x: number, y: number) {
     return rangeArray.map(index => (
         getLetterObject(x, y, total, index + 1)
     ));
+};
+
+export function updateLetter(id: number, val: string, letters: ILetterState[]) {
+    let letterObject = letters.find(letter => letter.id === id);
+    let updatedObject = Object.assign({}, letterObject, { val });
+    return letters.map(letter => {
+        if (letter.id === id) {
+            return updatedObject;
+        };
+        return letter;
+    });
+    // TODO This should return an updated array of letters to the reducer
+    // return letters.map(letter => (
+    //     letters.find(l => l.id === id) || letter
+    // ));
 };
 
 // Return the letter object
