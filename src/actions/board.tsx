@@ -1,6 +1,6 @@
 import * as boardConstants from '../constants/board';
 import { IBoardState } from '../types/board';
-import { ILetterState } from '../types/letters';
+import { ILetterState } from '../types/board';
 
 export interface ISetX {
     type: boardConstants.SET_X;

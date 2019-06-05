@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardSize from './containers/boardSize';
+import BoardSize from './containers/BoardSize';
 import './App.css';
 
 const App: React.FC = () => {

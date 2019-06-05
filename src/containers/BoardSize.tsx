@@ -1,16 +1,15 @@
-import Board from '../components/board';
+import BoardSize from '../components/BoardSize';
 import * as actions from '../actions/board';
 import { IStoreState } from '../types';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 export function mapStateToProps({ board }: IStoreState) {
-    const { size, letters } = board;
+    const { size } = board;
     const { x, y } = size;
     return {
         x,
         y,
-        letters,
     };
 };
 
@@ -21,4 +20,4 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.IBoardAction>) {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardSize);

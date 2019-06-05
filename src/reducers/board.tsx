@@ -1,14 +1,10 @@
 import { IBoardAction } from '../actions/board';
 import { IBoardState } from '../types/board';
-import { initialState } from '../constants/board';
 import {
+    initialState,
     SET_X,
     SET_Y,
-} from '../constants/boardSize';
-import {
-
-} from '../constants/letters';
-
+} from '../constants/board';
 
 export function boardReducer(
     state = initialState,

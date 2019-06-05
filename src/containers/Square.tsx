@@ -1,5 +1,5 @@
-import Square from '../components/square';
-import * as actions from '../actions/letters';
+import Square from '../components/Square';
+import * as actions from '../actions/board';
 import { IStoreState } from '../types';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -10,7 +10,7 @@ export function mapStateToProps() {
     // };
 };
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.ILettersAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.IBoardAction>) {
     return {
 
     };
