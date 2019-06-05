@@ -1,14 +1,14 @@
 import React from 'react';
 import BoardSize from './containers/BoardSize';
-import './App.css';
+import Board from './containers/Board';
+// import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          <BoardSize />
-        </p>
+        <BoardSize />
+        <Board />
       </header>
 
 

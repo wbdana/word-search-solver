@@ -21,4 +21,9 @@ export interface ILetterState {
     northwest: idOrNull;
 };
 
+export interface ISetLetterPayload {
+    id: number;
+    val: string;
+};
+
 export type idOrNull = number | null;

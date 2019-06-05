@@ -1,16 +1,36 @@
 import * as React from 'react';
-
-
+import BoardItem from './BoardItem';
+import { StyledBoard } from '../styled/board';
+import {
+    IBoardState,
+    IBoardSizeState,
+    ILetterState,
+    ISetLetterPayload,
+} from '../types/board';
 
 export interface IProps {
-
+    letters: ILetterState[];
+    size: IBoardSizeState,
+    setLetter: (payload: ISetLetterPayload) => void;
 };
 
-function Board({}: IProps) {
+function Board({ letters, size, setLetter }: IProps) {
+    // const { letters, size } = board;
+    const columns = size.x.toString();
+
+    const boardItems = letters.map(letter => (
+        <BoardItem
+            letter={letter}
+            setLetter={setLetter}
+        />
+    ));
+
     return (
-        <div className="board">
-            
-        </div>
+        <StyledBoard
+            columns={columns}
+        >
+            {boardItems}
+        </StyledBoard>
     );
 };
 

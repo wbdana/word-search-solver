@@ -4,12 +4,17 @@ import {
     initialState,
     SET_X,
     SET_Y,
+    SET_LETTER,
 } from '../constants/board';
-import { createLetters } from '../helpers/board';
+import {
+    createLetters,
+    updateLetter,
+} from '../helpers/board';
 
 export function boardReducer(
     state = initialState,
-    action: IBoardAction,
+    // action: IBoardAction,
+    action: any,
 ): IBoardState {
     const { payload, type } = action;
     switch(type) {
@@ -28,6 +33,17 @@ export function boardReducer(
                     ...state.size,
                     y: Number(payload),
                 },
+            };
+        case SET_LETTER:
+            console.log(payload);
+            // return state;
+            return {
+                ...state,
+                letters: updateLetter(
+                    payload.id,
+                    payload.val,
+                    state.letters
+                ),
             };
         default:
             return state;
