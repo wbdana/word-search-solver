@@ -5,6 +5,7 @@ import {
     SET_X,
     SET_Y,
 } from '../constants/board';
+import { createLetters } from '../helpers/board';
 
 export function boardReducer(
     state = initialState,
@@ -14,7 +15,7 @@ export function boardReducer(
     switch(type) {
         case SET_X:
             return {
-                ...state,
+                letters: createLetters(Number(payload), state.size.y),
                 size: {
                     ...state.size,
                     x: Number(payload),
@@ -22,7 +23,7 @@ export function boardReducer(
             };
         case SET_Y:
             return {
-                ...state,
+                letters: createLetters(state.size.x, Number(payload)),
                 size: {
                     ...state.size,
                     y: Number(payload),

@@ -16,8 +16,8 @@ export const initialState: IBoardState = {
     },
     letters: [
         {
-            id: 1,
-            val: 'A',
+            id: 0,
+            val: '',
             north: null,
             northeast: null,
             east: null,
