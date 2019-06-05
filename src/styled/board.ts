@@ -11,7 +11,7 @@ interface IBoardItemProps {
 
 export const StyledBoard = styled.div<IBoardProps>`
     display: grid;
-    grid-template-columns: repeat(${props => props.columns});
+    grid-template-columns: repeat(${props => props.columns}, 1fr);
 `;
 
 export const StyledBoardItem = styled.div<IBoardItemProps>`
