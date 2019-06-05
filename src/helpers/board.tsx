@@ -51,7 +51,7 @@ const getLetterObject = (
         southwest,
         west,
         northwest,
-    }
+    };
 };
 
 const getCardinalDirections = (
@@ -160,4 +160,4 @@ const getOrdinalDirections = (
         southwest,
         northwest,
     };
-}
+};
