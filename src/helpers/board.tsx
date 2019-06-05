@@ -26,10 +26,6 @@ export function updateLetter(id: number, val: string, letters: ILetterState[]) {
         };
         return letter;
     });
-    // TODO This should return an updated array of letters to the reducer
-    // return letters.map(letter => (
-    //     letters.find(l => l.id === id) || letter
-    // ));
 };
 
 // Return the letter object
