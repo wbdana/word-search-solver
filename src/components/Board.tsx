@@ -1,6 +1,9 @@
 import * as React from 'react';
 import BoardItem from './BoardItem';
-import { StyledBoard } from '../styled/board';
+import {
+    StyledBoardContainer,
+    StyledBoard,
+} from '../styled/board';
 import {
     IBoardState,
     IBoardSizeState,
@@ -15,7 +18,6 @@ export interface IProps {
 };
 
 function Board({ letters, size, setLetter }: IProps) {
-    // const { letters, size } = board;
     const columns = size.x.toString();
 
     const boardItems = letters.map(letter => (
@@ -26,11 +28,13 @@ function Board({ letters, size, setLetter }: IProps) {
     ));
 
     return (
-        <StyledBoard
-            columns={columns}
-        >
-            {boardItems}
-        </StyledBoard>
+        <StyledBoardContainer>
+            <StyledBoard
+                columns={columns}
+            >
+                {boardItems}
+            </StyledBoard>
+        </StyledBoardContainer>
     );
 };
 
