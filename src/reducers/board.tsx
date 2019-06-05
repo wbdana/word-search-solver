@@ -1,5 +1,5 @@
 import { IBoardAction } from '../actions/board';
-import { IBoardState } from '../types/board';
+import { IBoardState, ISetLetterPayload } from '../types/board';
 import {
     initialState,
     SET_X,
@@ -13,8 +13,7 @@ import {
 
 export function boardReducer(
     state = initialState,
-    // action: IBoardAction,
-    action: any,
+    action: IBoardAction,
 ): IBoardState {
     const { payload, type } = action;
     switch(type) {
@@ -35,14 +34,14 @@ export function boardReducer(
                 },
             };
         case SET_LETTER:
-            console.log(payload);
-            // return state;
+            const letterPayload = payload as ISetLetterPayload;
+            const { id, val } = letterPayload;
             return {
                 ...state,
                 letters: updateLetter(
-                    payload.id,
-                    payload.val,
-                    state.letters
+                    id,
+                    val,
+                    state.letters,
                 ),
             };
         default:
