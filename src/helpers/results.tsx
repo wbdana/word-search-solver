@@ -87,6 +87,7 @@ export class WordSearch {
                 return;
             }
 
+            // @ts-ignore
             let nextSquareId: any = currentLetter[key];
 
             if (nextSquareId === null) {
@@ -97,6 +98,7 @@ export class WordSearch {
                 return;
             }
 
+            // @ts-ignore
             let nextSquare: ILetterState = this.getSquareById(nextSquareId);
 
             this.traverseBoard(
