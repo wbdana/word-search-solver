@@ -5,8 +5,12 @@ export interface IProps {
 };
 
 function ResultsList({ words }: IProps) {
-    const formattedResults = words.map(word => (
-        <li>{word}</li>
+    const formattedResults = words.map((word, index) => (
+        <li
+            key={index}
+        >
+            {word}
+        </li>
     ));
 
     return (

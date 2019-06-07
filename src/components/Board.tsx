@@ -20,8 +20,9 @@ export interface IProps {
 function Board({ letters, size, setLetter }: IProps) {
     const columns = size.x.toString();
 
-    const boardItems = letters.map(letter => (
+    const boardItems = letters.map((letter, index) => (
         <BoardItem
+            key={index}
             letter={letter}
             setLetter={setLetter}
         />
