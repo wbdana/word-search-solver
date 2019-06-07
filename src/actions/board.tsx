@@ -1,9 +1,5 @@
 import * as boardConstants from '../constants/board';
-import { IBoardState } from '../types/board';
-import {
-    ILetterState,
-    ISetLetterPayload,
-} from '../types/board';
+import { ISetLetterPayload } from '../types/board';
 
 export interface ISetX {
     type: boardConstants.SET_X;
@@ -52,10 +48,3 @@ export function setLetter(payload: ISetLetterPayload): ISetLetter {
         payload,
     };
 };
-
-// export function setLetters(payload: ILetterState[]): ISetLetters {
-//     return {
-//         type: boardConstants.SET_LETTERS,
-//         payload,
-//     };
-// };

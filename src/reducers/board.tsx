@@ -6,6 +6,8 @@ import {
     SET_Y,
     SET_LETTER,
 } from '../constants/board';
+
+// TODO These helpers probably should be used in the actions rather than the reducer
 import {
     createLetters,
     updateLetter,
