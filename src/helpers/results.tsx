@@ -2,39 +2,8 @@ import {
     ILetterState,
     idOrNull,
 } from '../types/board';
-// import DICTIONARY from './dictionary/dictionary.json';
 const DICTIONARY = require('./dictionary/dictionary');
 const PREFIXES = require('./dictionary/prefixes');
-
-// export const boggle = (letters: ILetterState[]) => {
-//     let results: string[] = [];
-
-//     letters.forEach(letter => {
-//         let currentString: string = '';
-//         let visitedIds: number[] = [];
-//         traverseBoard(
-//             letter,
-//             currentString,
-//             visitedIds,
-//             results,
-//         );
-//     });
-
-//     return results;
-// };
-
-// const traverseBoard = (currentLetter: ILetterState, currentString: string, visitedIds: number[], results: string[]) {
-//     currentString += currentLetter.val;
-//     visitedIds.push(currentLetter.id);
-
-//     if (!isPrefix(currentString)) {
-//         return;
-//     }
-
-//     if (isWord(currentString) && !results.includes(currentString)) {
-//         results.push()
-//     }
-// };
 
 const isWord = (word: string): Boolean => {
     return !!DICTIONARY[word];
@@ -52,7 +21,6 @@ export class WordSearch {
         this.letters = letters;
         this.results = [];
         this.boggle(letters);
-        // return this.results;
     };
 
 
