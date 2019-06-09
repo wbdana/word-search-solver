@@ -1,5 +1,4 @@
 import * as resultsConstants from '../constants/results';
-import { IResultsState } from '../types/results';
 import { WordSearch } from '../helpers/results';
 
 export interface ISolveBoard {

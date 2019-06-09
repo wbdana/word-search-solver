@@ -5,7 +5,6 @@ import {
     StyledBoard,
 } from '../styled/board';
 import {
-    IBoardState,
     IBoardSizeState,
     ILetterState,
     ISetLetterPayload,

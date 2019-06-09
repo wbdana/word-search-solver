@@ -7,7 +7,6 @@ import { Dispatch } from 'redux';
 
 export function mapStateToProps({ board }: IStoreState) {
     const { size, letters } = board;
-    const { x, y } = size;
     return {
         letters,
         size,

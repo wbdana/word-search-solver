@@ -2,7 +2,6 @@ import { IResultsAction } from '../actions/results';
 import { IResultsState } from '../types/results';
 import {
     initialState,
-    SOLVE_BOARD,
     SET_WORDS,
 } from '../constants/results';
 
