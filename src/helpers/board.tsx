@@ -87,7 +87,8 @@ const getCardinalDirections = (
     };
 
     // East
-    if (id % x === 0) {
+    // TODO Check this
+    if (id % x === 0 || id % x === 1) {
         east = null;
     }
     else {
@@ -103,7 +104,8 @@ const getCardinalDirections = (
     };
 
     // West
-    if (id % x === 1) {
+    // TODO Check this
+    if (id % x === 1 || id % x === 0) {
         west = null;
     }
     else {

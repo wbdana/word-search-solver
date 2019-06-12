@@ -11,15 +11,21 @@ export interface ISetSolveOptionBackward {
     payload: Boolean;
 };
 
+export interface ISetSolveOptionUp {
+    type: solveOptionsConstants.SET_SOLVE_OPTION_UP;
+    payload: Boolean;
+};
+
+export interface ISetSolveOptionDown {
+    type: solveOptionsConstants.SET_SOLVE_OPTION_DOWN;
+    payload: Boolean;
+};
+
 export interface ISetSolveOptionDiagonal {
     type: solveOptionsConstants.SET_SOLVE_OPTION_DIAGONAL;
     payload: Boolean;
 };
 
-export interface ISetSolveOptionZigzag {
-    type: solveOptionsConstants.SET_SOLVE_OPTION_ZIGZAG;
-    payload: Boolean;
-};
 export interface ISetSolveOptions {
     type: solveOptionsConstants.SET_SOLVE_OPTIONS;
     payload: ISolveOptionsState;
@@ -28,8 +34,9 @@ export interface ISetSolveOptions {
 export type ISolveOptionsAction =
     ISetSolveOptionForward |
     ISetSolveOptionBackward |
-    ISetSolveOptionDiagonal |
-    ISetSolveOptionZigzag
+    ISetSolveOptionUp |
+    ISetSolveOptionDown |
+    ISetSolveOptionDiagonal
 ;
 
 export function setSolveOptionForward(payload: Boolean): ISetSolveOptionForward {
@@ -46,16 +53,23 @@ export function setSolveOptionBackward(payload: Boolean): ISetSolveOptionBackwar
     };
 };
 
-export function setSolveOptionDiagonal(payload: Boolean): ISetSolveOptionDiagonal {
+export function setSolveOptionUp(payload: Boolean): ISetSolveOptionUp {
     return {
-        type: solveOptionsConstants.SET_SOLVE_OPTION_DIAGONAL,
+        type: solveOptionsConstants.SET_SOLVE_OPTION_UP,
         payload,
     };
 };
 
-export function setSolveOptionZigzag(payload: Boolean): ISetSolveOptionZigzag {
+export function setSolveOptionDown(payload: Boolean): ISetSolveOptionDown {
     return {
-        type: solveOptionsConstants.SET_SOLVE_OPTION_ZIGZAG,
+        type: solveOptionsConstants.SET_SOLVE_OPTION_DOWN,
+        payload,
+    };
+};
+
+export function setSolveOptionDiagonal(payload: Boolean): ISetSolveOptionDiagonal {
+    return {
+        type: solveOptionsConstants.SET_SOLVE_OPTION_DIAGONAL,
         payload,
     };
 };

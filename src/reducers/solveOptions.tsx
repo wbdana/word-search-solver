@@ -3,8 +3,9 @@ import {
     initialState,
     SET_SOLVE_OPTION_FORWARD,
     SET_SOLVE_OPTION_BACKWARD,
+    SET_SOLVE_OPTION_UP,
+    SET_SOLVE_OPTION_DOWN,
     SET_SOLVE_OPTION_DIAGONAL,
-    SET_SOLVE_OPTION_ZIGZAG,
 } from '../constants/solveOptions';
 import { ISolveOptionsState } from '../types/solveOptions';
 
@@ -24,15 +25,20 @@ export function solveOptionsReducer(
                 ...state,
                 backward: payload,
             };
+        case SET_SOLVE_OPTION_UP:
+            return {
+                ...state,
+                up: payload,
+            };
+        case SET_SOLVE_OPTION_DOWN:
+            return {
+                ...state,
+                down: payload,
+            };
         case SET_SOLVE_OPTION_DIAGONAL:
             return {
                 ...state,
                 diagonal: payload,
-            };
-        case SET_SOLVE_OPTION_ZIGZAG:
-            return {
-                ...state,
-                zigzag: payload,
             };
         default:
             return state;
