@@ -58,26 +58,13 @@ export class WordSearch {
             this.results.push(currentString);
         }
 
-        // let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
-        // console.log("directions", directions);
+        let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
         const filteredDirections = this.getFilteredDirections();
-        // directions = directions.filter(key => {
-        //     return filteredDirections.indexOf(key) < 0;
-        // });
-        // console.log("directions 2", directions);
+        directions = directions.filter(key => {
+            return filteredDirections.indexOf(key) < 0;
+        });
 
-        Object.keys(currentLetter).forEach(key => {
-            if (key === "id" || key === "val") {
-                return;
-            }
-
-            if (filteredDirections.includes(key)) {
-                return;
-            };
-
-            // TODO Filter out appropriate directions based on grid size and solve options
-
-
+        directions.forEach(key => {
             // @ts-ignore
             let nextSquareId: any = currentLetter[key];
 
