@@ -17,7 +17,7 @@ export function solveBoard() {
         const { board, solveOptions } = getState();
         const results = new WordSearch(board, solveOptions).results;
         dispatch(setWords(results));
-    }
+    };
 };
 
 export function setWords(payload: string[]): ISetWords {

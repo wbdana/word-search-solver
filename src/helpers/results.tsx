@@ -58,6 +58,8 @@ export class WordSearch {
             this.results.push(currentString);
         }
 
+        const filteredDirections = this.getFilteredDirections();
+
         Object.keys(currentLetter).forEach(key => {
             if (key === "id" || key === "val") {
                 return;
@@ -88,7 +90,31 @@ export class WordSearch {
         });
     };
 
-    
+    getFilteredDirections(): String[] {
+        // x is number of columns
+        const { x, y } = this.size;
+        // TODO zigzag is really the same as forward, backward, and diagonal all being true
+        // What about north/south exclusively? solveOptions should include vertical
+        // TODO So really, remove zigzag, and add a "vertical" option
+        const { forward, backward, diagonal, zigzag } = this.solveOptions;
+        const directions = [
+            "north",
+            "northeast",
+            "east",
+            "southeast",
+            "south",
+            "southwest",
+            "west",
+            "northwest",
+        ];
+
+        const filteredForward = forward ? ["east"] : [];
+        const filteredBackward = backward ? ["west"] : [];
+        // const filteredVertical = vertical ? ["north", "south"] : [];
+        const filteredDiagonal = diagonal ? ["northeast", "southeast", "southwest", "northwest"] : [];
+
+        return [];
+    };
 
     getSquareById(id: number): ILetterState | undefined {
         return this.letters.find(letter => letter.id === id);
