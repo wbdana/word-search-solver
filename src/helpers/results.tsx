@@ -4,6 +4,7 @@ import {
     IBoardSizeState,
     // idOrNull,
 } from '../types/board';
+import { ISolveOptionsState } from '../types/solveOptions';
 const DICTIONARY = require('./dictionary/dictionary');
 const PREFIXES = require('./dictionary/prefixes');
 
@@ -18,11 +19,14 @@ const isPrefix = (word: string): Boolean => {
 export class WordSearch {
     letters: ILetterState[];
     size: IBoardSizeState;
+    solveOptions: ISolveOptionsState;
     results: string[];
 
-    constructor(board: IBoardState) {
-        this.letters = board.letters;
-        this.size = board.size;
+    constructor(board: IBoardState, solveOptions: ISolveOptionsState) {
+        const { letters, size } = board;
+        this.letters = letters;
+        this.size = size;
+        this.solveOptions = solveOptions;
         this.results = [];
         this.boggle(this.letters, this.size);
     }
@@ -83,6 +87,8 @@ export class WordSearch {
             );
         });
     };
+
+    
 
     getSquareById(id: number): ILetterState | undefined {
         return this.letters.find(letter => letter.id === id);
