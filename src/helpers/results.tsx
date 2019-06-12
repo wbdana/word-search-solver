@@ -1,5 +1,7 @@
 import {
     ILetterState,
+    IBoardState,
+    IBoardSizeState,
     // idOrNull,
 } from '../types/board';
 const DICTIONARY = require('./dictionary/dictionary');
@@ -15,16 +17,18 @@ const isPrefix = (word: string): Boolean => {
 
 export class WordSearch {
     letters: ILetterState[];
+    size: IBoardSizeState;
     results: string[];
 
-    constructor(letters: ILetterState[]) {
-        this.letters = letters;
+    constructor(board: IBoardState) {
+        this.letters = board.letters;
+        this.size = board.size;
         this.results = [];
-        this.boggle(letters);
-    };
+        this.boggle(this.letters, this.size);
+    }
 
 
-    boggle(letters: ILetterState[]) {
+    boggle(letters: ILetterState[], size: IBoardSizeState) {
         letters.forEach(letter => {
             let currentString: string = '';
             let visitedIds: number[] = [];

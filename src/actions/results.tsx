@@ -15,8 +15,7 @@ export type IResultsAction = ISetWords;
 export function solveBoard() {
     return (dispatch: any, getState: any) => {
         const { board } = getState();
-        const { letters } = board;
-        const results = new WordSearch(letters).results;
+        const results = new WordSearch(board).results;
         dispatch(setWords(results));
     }
 };
