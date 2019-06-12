@@ -58,12 +58,22 @@ export class WordSearch {
             this.results.push(currentString);
         }
 
+        // let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
+        // console.log("directions", directions);
         const filteredDirections = this.getFilteredDirections();
+        // directions = directions.filter(key => {
+        //     return filteredDirections.indexOf(key) < 0;
+        // });
+        // console.log("directions 2", directions);
 
         Object.keys(currentLetter).forEach(key => {
             if (key === "id" || key === "val") {
                 return;
             }
+
+            if (filteredDirections.includes(key)) {
+                return;
+            };
 
             // TODO Filter out appropriate directions based on grid size and solve options
 
@@ -91,29 +101,32 @@ export class WordSearch {
     };
 
     getFilteredDirections(): String[] {
-        // x is number of columns
-        const { x, y } = this.size;
-        // TODO zigzag is really the same as forward, backward, and diagonal all being true
-        // What about north/south exclusively? solveOptions should include vertical
-        // TODO So really, remove zigzag, and add a "vertical" option
-        const { forward, backward, diagonal, zigzag } = this.solveOptions;
-        const directions = [
-            "north",
-            "northeast",
-            "east",
-            "southeast",
-            "south",
-            "southwest",
-            "west",
-            "northwest",
-        ];
+        const { forward, backward, up, down, diagonal, } = this.solveOptions;
 
-        const filteredForward = forward ? ["east"] : [];
-        const filteredBackward = backward ? ["west"] : [];
-        // const filteredVertical = vertical ? ["north", "south"] : [];
-        const filteredDiagonal = diagonal ? ["northeast", "southeast", "southwest", "northwest"] : [];
+        let directionsToFilter = [];
 
-        return [];
+        if (!forward) {
+            directionsToFilter.push("east");
+        };
+
+        if (!backward) {
+            directionsToFilter.push("west");
+        };
+
+        if (!up) {
+            directionsToFilter.push("north");
+        };
+
+        if (!down) {
+            directionsToFilter.push("south");
+        };
+
+        if (!diagonal) {
+            directionsToFilter.push(["northeast", "southeast", "southwest", "northwest"]);
+            directionsToFilter = directionsToFilter.flat();
+        };
+
+        return directionsToFilter;
     };
 
     getSquareById(id: number): ILetterState | undefined {

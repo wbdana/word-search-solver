@@ -12,8 +12,9 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.ISolveOptionsActio
     return {
         setForward: (payload: Boolean) => dispatch(actions.setSolveOptionForward(payload)),
         setBackward: (payload: Boolean) => dispatch(actions.setSolveOptionBackward(payload)),
+        setUp: (payload: Boolean) => dispatch(actions.setSolveOptionUp(payload)),
+        setDown: (payload: Boolean) => dispatch(actions.setSolveOptionDown(payload)),
         setDiagonal: (payload: Boolean) => dispatch(actions.setSolveOptionDiagonal(payload)),
-        setZigzag: (payload: Boolean) => dispatch(actions.setSolveOptionZigzag(payload)),
     };
 };
 

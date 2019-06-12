@@ -6,23 +6,27 @@ import {
 export interface IProps {
     forward: Boolean;
     backward: Boolean;
+    up: Boolean;
+    down: Boolean;
     diagonal: Boolean;
-    zigzag: Boolean;
     setForward: (payload: Boolean) => void;
     setBackward: (payload: Boolean) => void;
+    setUp: (payload: Boolean) => void;
+    setDown: (payload: Boolean) => void;
     setDiagonal: (payload: Boolean) => void;
-    setZigzag: (payload: Boolean) => void;
 };
 
 function SolveOptions({
     forward,
     backward,
+    up,
+    down,
     diagonal,
-    zigzag,
     setForward,
     setBackward,
+    setUp,
+    setDown,
     setDiagonal,
-    setZigzag,
 }: IProps) {
 
     const handleForwardChecked = () => {
@@ -33,12 +37,16 @@ function SolveOptions({
         setBackward(!backward);
     };
 
-    const handleDiagonalChecked = () => {
-        setDiagonal(!diagonal);
+    const handleUpChecked = () => {
+        setUp(!up);
     };
 
-    const handleZigzagChecked = () => {
-        setZigzag(!zigzag);
+    const handleDownChecked = () => {
+        setDown(!down);
+    };
+
+    const handleDiagonalChecked = () => {
+        setDiagonal(!diagonal);
     };
 
     return (
@@ -68,6 +76,30 @@ function SolveOptions({
             </label>
 
             <label>
+                Up
+                <StyledCheckbox
+                    type="checkbox"
+                    id="backward"
+                    name="backward"
+                    // @ts-ignore
+                    checked={up}
+                    onChange={handleUpChecked}
+                />
+            </label>
+
+            <label>
+                Down
+                <StyledCheckbox
+                    type="checkbox"
+                    id="backward"
+                    name="backward"
+                    // @ts-ignore
+                    checked={down}
+                    onChange={handleDownChecked}
+                />
+            </label>
+
+            <label>
                 Diagonal
                 <StyledCheckbox
                     type="checkbox"
@@ -76,18 +108,6 @@ function SolveOptions({
                     // @ts-ignore
                     checked={diagonal}
                     onChange={handleDiagonalChecked}
-                />
-            </label>
-
-            <label>
-                ZigZag
-                <StyledCheckbox
-                    type="checkbox"
-                    id="backward"
-                    name="backward"
-                    // @ts-ignore
-                    checked={zigzag}
-                    onChange={handleZigzagChecked}
                 />
             </label>
         </div>
