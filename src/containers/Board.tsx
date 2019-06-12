@@ -6,11 +6,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 export function mapStateToProps({ board }: IStoreState) {
-    const { size, letters } = board;
-    return {
-        letters,
-        size,
-    };
+    return board;
 };
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.IBoardAction>) {
