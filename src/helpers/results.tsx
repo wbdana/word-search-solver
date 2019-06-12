@@ -1,6 +1,6 @@
 import {
     ILetterState,
-    idOrNull,
+    // idOrNull,
 } from '../types/board';
 const DICTIONARY = require('./dictionary/dictionary');
 const PREFIXES = require('./dictionary/prefixes');
@@ -54,6 +54,9 @@ export class WordSearch {
             if (key === "id" || key === "val") {
                 return;
             }
+
+            // TODO Filter out appropriate directions based on grid size and solve options
+
 
             // @ts-ignore
             let nextSquareId: any = currentLetter[key];

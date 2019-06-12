@@ -53,7 +53,7 @@ export function setSolveOptionDiagonal(payload: Boolean): ISetSolveOptionDiagona
     };
 };
 
-export function setSolveOptionZigZag(payload: Boolean): ISetSolveOptionZigzag {
+export function setSolveOptionZigzag(payload: Boolean): ISetSolveOptionZigzag {
     return {
         type: solveOptionsConstants.SET_SOLVE_OPTION_ZIGZAG,
         payload,
