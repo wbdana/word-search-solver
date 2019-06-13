@@ -42,7 +42,7 @@ const getLetterObject = (
         east,
         south,
         west,
-    } = getCardinalDirections(x, total, id);
+    } = getCardinalDirections(x, y, total, id);
 
     const {
         northeast,
@@ -67,7 +67,7 @@ const getLetterObject = (
 
 const getCardinalDirections = (
     x: number,
-    // y: number,
+    y: number,
     total: number,
     id: number
 ): IGetCardinalDirections => {
@@ -87,8 +87,7 @@ const getCardinalDirections = (
     };
 
     // East
-    // TODO Check this
-    if (id % x === 0 || id % x === 1) {
+    if (id % x === 0) {
         east = null;
     }
     else {
@@ -104,12 +103,22 @@ const getCardinalDirections = (
     };
 
     // West
-    // TODO Check this
-    if (id % x === 1 || id % x === 0) {
+    if (id % x === 1) {
         west = null;
     }
     else {
         west = id - 1;
+    };
+
+    // Catch all
+    if (x === 1) {
+        west = null;
+        east = null;
+    };
+
+    if (y === 1) {
+        north = null;
+        south = null;
     };
 
     return {
