@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { StyledBoardItem } from '../styled/board';
+import {
+    StyledBoardItem,
+    StyledBoardItemInput,
+} from '../styled/board';
 import { ILetterState, ISetLetterPayload } from '../types/board';
 
 export interface IProps {
@@ -22,8 +25,7 @@ function BoardItem({ letter, setLetter }: IProps) {
 
     return (
         <StyledBoardItem>
-            {/* TODO Input should be a styled component */}
-            <input
+            <StyledBoardItemInput
                 type="text"
                 className="board board__item board__item-input"
                 onChange={handleChange}
