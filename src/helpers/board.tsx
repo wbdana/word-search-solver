@@ -7,6 +7,7 @@ import {
 
 export function createLetters(x: number, y: number) {
     let total = x * y;
+    // TODO Write a better way to do this
     // Create an array of the necessary letter object IDs
     // @ts-ignore
     let rangeArray = [ ...Array(x * y).keys() ];

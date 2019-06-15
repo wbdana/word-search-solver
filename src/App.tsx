@@ -10,10 +10,8 @@ const App: React.FC = () => {
     <div className="App">
       <SolveOptions />
       <BoardSize />
-      <div>
-        <Board />
-        <SolveButton />
-      </div>
+      <Board />
+      <SolveButton />
       <ResultsList />
 
 
