@@ -17,7 +17,8 @@ export interface IProps {
 };
 
 function Board({ letters, size, setLetter }: IProps) {
-    const columns = size.x.toString();
+    const { x, y } = size;
+    const columns = x.toString();
 
     const boardItems = letters.map((letter, index) => (
         <BoardItem
@@ -28,7 +29,10 @@ function Board({ letters, size, setLetter }: IProps) {
     ));
 
     return (
-        <StyledBoardContainer>
+        <StyledBoardContainer
+            x={x}
+            y={y}
+        >
             <StyledBoard
                 columns={columns}
             >
