@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyledResultsList } from '../styled/results';
 
 export interface IProps {
     words: string[];
@@ -14,11 +15,9 @@ function ResultsList({ words }: IProps) {
     ));
 
     return (
-        <div className="resultslist">
-            <ul>
-                {formattedResults}
-            </ul>
-        </div>
+        <StyledResultsList>
+            {formattedResults}
+        </StyledResultsList>
     );
 };
 

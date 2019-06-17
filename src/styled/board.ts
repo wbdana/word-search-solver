@@ -22,24 +22,30 @@ export const StyledBoardContainer = styled.div<IBoardSizeState>`
 `;
 
 export const StyledBoard = styled.div<IBoardProps>`
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(${props => props.columns}, 1fr);
     grid-column-gap: 0;
+    grid-template-columns: repeat(${props => props.columns}, 1fr);
+    position: relative;
 `;
 
 export const StyledBoardItem = styled.div<IBoardItemProps>`
-    width: 40px;
+    border-color: black;
     border-style: solid;
     border-width; 5px;
-    border-color: black;
-    border-radius: 3px;
+    height: 40px;
+    position: relative;
+    width: 40px;    
 `;
 
 export const StyledBoardItemInput = styled.input`
-    width: 100%;
     border: none;
-    font-size: 1rem;
+    display: block;
+    font-size: 25px;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
 
     &:focus {
         outline: none;
