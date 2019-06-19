@@ -10,8 +10,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <SolveOptions />
       <BoardSize />
+      <SolveOptions />
       <Board />
       <SolveButton />
       <ResultsList />

@@ -2,6 +2,9 @@ import * as React from 'react';
 import {
     StyledCheckbox,
 } from '../styled/checkboxes';
+import {
+    StyledSolveOptions,
+} from '../styled/solveOptions';
 
 export interface IProps {
     forward: Boolean;
@@ -50,7 +53,7 @@ function SolveOptions({
     };
 
     return (
-        <div>
+        <StyledSolveOptions>
             <label>
                 Forward
                 <StyledCheckbox
@@ -110,7 +113,7 @@ function SolveOptions({
                     onChange={handleDiagonalChecked}
                 />
             </label>
-        </div>
+        </StyledSolveOptions>
     );
 };
 
