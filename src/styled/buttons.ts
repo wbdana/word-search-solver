@@ -10,5 +10,13 @@ export const StyledSolveButton = styled.button`
     position: relative;
     text-align: center;
     text-decoration: none;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0);
+    transition: all .2s ease;
+
+    &:hover {
+        background-color: lightgrey;
+        border: 1px solid black;
+        color: black;
+        transform: translate(-50%, -3px);
+    };
 `;
