@@ -18,7 +18,7 @@ export const StyledBoardContainer = styled.div<IBoardSizeState>`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-width: ${props => props.x * 40}px;
+    max-width: ${props => props.x * 45}px;
 `;
 
 export const StyledBoard = styled.div<IBoardProps>`
