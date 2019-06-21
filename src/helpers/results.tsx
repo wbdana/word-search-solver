@@ -54,9 +54,13 @@ export class WordSearch {
             return;
         }
         
-        if (isWord(currentString) && !this.results.includes(currentString)) {
-            this.results.push(currentString);
-        }
+//        if (isWord(currentString) && !this.results.includes(currentString)) {
+//          this.results.push(currentString);
+//        }
+
+	if (isWord(currentString) {
+		this.results.push(currentString);
+	};
 
         let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
         const filteredDirections = this.getFilteredDirections();
