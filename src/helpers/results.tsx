@@ -36,39 +36,74 @@ export class WordSearch {
         letters.forEach(letter => {
             let currentString: string = '';
             let visitedIds: number[] = [];
+            let topLevelLetterId = letter.id;
+            let lastString = '';
+            // console.log("top level traverseBoard, letter: ", letter, "currentString: ", currentString, "visitedIds: ", visitedIds);
             this.traverseBoard(
                 letter,
                 currentString,
                 visitedIds,
+                topLevelLetterId,
+                lastString,
             );
         });
     
-        return this.results;
+        console.log(this.results);
+        // @ts-ignore
+        console.log([...new Set(this.results)]);
+
+        // @ts-ignore
+        return [...new Set(this.results)];
+        // return this.results;
     };
 
-    traverseBoard(currentLetter: ILetterState, currentString: string, visitedIds: number[]) {
+    traverseBoard(currentLetter: ILetterState, currentString: string, visitedIds: number[], topLevelLetterId: number, lastString: string) {
+        // if (currentLetter.val === 'a' || currentLetter.val === 'A') {
+        //     console.log("a values");
+        //     console.log (currentLetter, currentString, visitedIds);
+        // }
         currentString += currentLetter.val;
         visitedIds.push(currentLetter.id);
     
         if (!isPrefix(currentString)) {
+            if (topLevelLetterId === 6) {
+                console.log("NOT A PREFIX: ", currentString);
+            }
+            // Remove visitedIds from the last iteration if the lastString's length is different than the currentString
+            // E.G., if lastString was 'atip'
+            // and currenttString is 'at'
+            // We know we used two more letters in the last attempt (and added those letters' ids to visitedIds) than we now have
+            // and therefore must remove the last two visitedIds
+            if (lastString.length !== currentString.length + 1) {
+                for (let i=0; i < lastString.length; i++) {
+                    visitedIds.pop();
+                }
+            }
             return;
-        }
-        
-//        if (isWord(currentString) && !this.results.includes(currentString)) {
-//          this.results.push(currentString);
-//        }
+        };
 
         if (isWord(currentString)) {
             this.results.push(currentString);
         };
 
         let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
-        const filteredDirections = this.getFilteredDirections();
-        directions = directions.filter(key => {
-            return filteredDirections.indexOf(key) < 0;
-        });
+
+        // const filteredDirections = this.getFilteredDirections();
+
+        // directions = directions.filter(key => {
+        //     return filteredDirections.indexOf(key) < 0;
+        // });
 
         directions.forEach(key => {
+            // TODO The problem here is that after constructing a word, and then backtracking, visitedIds remain unchanged.
+            // Therefore this skips certain letters that should not be skipped in their subsequent iteration
+
+
+            if (topLevelLetterId === 6) {
+                console.log("currentString: ", currentString);
+                console.log("next key/direction: ", key);
+            }
+
             // @ts-ignore
             let nextSquareId: any = currentLetter[key];
 
@@ -77,6 +112,13 @@ export class WordSearch {
             }
 
             if (visitedIds.includes(nextSquareId)) {
+                // console.log("currentLetter.val: ",  currentLetter.val);
+                // console.log("currentString: ", currentString);
+                if (topLevelLetterId === 6) {
+                    console.log("visitedIds: ", visitedIds);
+                    console.log("nextSquareId: ", nextSquareId);
+                    console.log("Skipping the above iteration");
+                }
                 return;
             }
 
@@ -87,6 +129,8 @@ export class WordSearch {
                 nextSquare,
                 currentString,
                 visitedIds,
+                topLevelLetterId,
+                currentString,
             );
         });
     };
