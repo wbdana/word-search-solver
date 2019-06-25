@@ -82,17 +82,17 @@ export class WordSearch {
             return;
         };
 
-        if (isWord(currentString)) {
+        if (isWord(currentString) && !this.results.includes(currentString)) {
             this.results.push(currentString);
         };
 
         let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
 
-        // const filteredDirections = this.getFilteredDirections();
+        const filteredDirections = this.getFilteredDirections();
 
-        // directions = directions.filter(key => {
-        //     return filteredDirections.indexOf(key) < 0;
-        // });
+        directions = directions.filter(key => {
+            return filteredDirections.indexOf(key) < 0;
+        });
 
         directions.forEach(key => {
             // TODO The problem here is that after constructing a word, and then backtracking, visitedIds remain unchanged.
