@@ -56,11 +56,11 @@ export class WordSearch {
         if (!isPrefix(currentString)) {
             // Remove visitedIds from the last iteration if the lastString's length is different than the currentString
             // E.G., if lastString was 'atip'
-            // and currenttString is 'at'
+            // and currentString is 'at'
             // We know we used two more letters in the last attempt (and added those letters' ids to visitedIds) than we now have
             // and therefore must remove the last two visitedIds
             if (lastString.length !== currentString.length + 1) {
-                for (let i=0; i < lastString.length; i++) {
+                for (let i=0; i < lastString.length-1; i++) {
                     visitedIds.pop();
                 }
             }

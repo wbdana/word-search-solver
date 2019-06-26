@@ -28,6 +28,8 @@ function BoardItem({ letter, setLetter }: IProps) {
                 id,
                 val: newValue,
             });
+
+            // TODO Automatically 'tab' to next input
         }
     };
 

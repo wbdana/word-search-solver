@@ -8,14 +8,22 @@ export interface IProps {
 };
 
 function BoardSize({ x, y, setX, setY }: IProps) {
+    const handleChange = (event: any) => {
+        const regex = /[1-9]+/;
+        event.preventDefault();
+        const { target } = event;
+        const { name, value } = target;
 
-    const handleXChange = (event: any) => {
-        setX(event.target.value);
-    };
-
-    const handleYChange = (event: any) => {
-        setY(event.target.value);
-    };
+        if (regex.test(value) || value === "") {
+            if (name === 'x') {
+                setX(value);
+            }
+    
+            if (name === 'y') {
+                setY(value);
+            }
+        }
+    }
 
     return (
         <div className="boardsize">
@@ -26,7 +34,7 @@ function BoardSize({ x, y, setX, setY }: IProps) {
                     className="boardsize boardsize__input"
                     name="x"
                     value={x}
-                    onChange={handleXChange}
+                    onChange={handleChange}
                 />
                 x
                 <input
@@ -34,7 +42,7 @@ function BoardSize({ x, y, setX, setY }: IProps) {
                     className="boardsize boardsize__input"
                     name="y"
                     value={y}
-                    onChange={handleYChange}
+                    onChange={handleChange}
                 />
             </p>
         </div>
