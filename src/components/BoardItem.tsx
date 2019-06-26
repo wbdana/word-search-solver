@@ -17,10 +17,18 @@ function BoardItem({ letter, setLetter }: IProps) {
     } = letter;
 
     const handleChange = (event: any) => {
-        setLetter({
-            id,
-            val: event.target.value,
-        })
+        const regex = /[a-zA-Z]/;
+        event.preventDefault();
+        const { target } = event;
+        const { value } = target;
+        const newValue = value[value.length - 1];
+        
+        if (regex.test(newValue)) {
+            setLetter({
+                id,
+                val: newValue,
+            });
+        }
     };
 
     return (
