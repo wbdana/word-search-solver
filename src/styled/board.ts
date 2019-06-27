@@ -11,7 +11,8 @@ interface IBoardProps {
 };
 
 interface IBoardItemProps {
-
+    val?: string;
+    value?: string;
 };
 
 export const StyledBoardContainer = styled.div<IBoardSizeState>`
@@ -29,15 +30,17 @@ export const StyledBoard = styled.div<IBoardProps>`
 `;
 
 export const StyledBoardItem = styled.div<IBoardItemProps>`
+    background-color: ${props => props.val === '' ? 'black' : 'white'};
     border-color: black;
     border-style: solid;
     border-width; 5px;
     height: 40px;
     position: relative;
-    width: 40px;    
+    width: 40px;
 `;
 
-export const StyledBoardItemInput = styled.input`
+export const StyledBoardItemInput = styled.input<IBoardItemProps>`
+    background-color: ${props => props.value === '' ? 'black' : 'white'};
     border: none;
     display: block;
     font-size: 25px;

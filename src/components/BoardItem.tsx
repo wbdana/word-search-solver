@@ -23,9 +23,9 @@ function BoardItem({ letter, setLetter }: IProps) {
         const { value } = target;
         const newValue = value[value.length - 1] || '';
         
-        console.log(value);
+        // console.log(value);
 
-        if (regex.test(newValue)) {
+        if (regex.test(newValue) || newValue === '') {
             setLetter({
                 id,
                 val: newValue,
@@ -36,7 +36,9 @@ function BoardItem({ letter, setLetter }: IProps) {
     };
 
     return (
-        <StyledBoardItem>
+        <StyledBoardItem
+            val={val}
+        >
             <StyledBoardItemInput
                 type="text"
                 className="board board__item board__item-input"
