@@ -52,6 +52,29 @@ export class WordSearch {
     traverseBoard(currentLetter: ILetterState, currentString: string, visitedIds: number[], lastString: string) {
         currentString += currentLetter.val;
         visitedIds.push(currentLetter.id);
+
+        let difference = currentString.length - visitedIds.length + 1;
+
+        // if (currentLetter.id === 23) {
+        //     console.log("--- HERE ---");
+        // }
+
+        if (currentString.length !== visitedIds.length + 1) {
+            if (currentLetter.id === 23 && currentString.includes('piousnes') && currentString[0] !== 'i') {
+                console.log(
+                    "ERROR: difference: ",
+                    difference,
+                    "\n",
+                    "currentString: ",
+                    currentString,
+                    "\n",
+                    "visitedIds: ",
+                    visitedIds,
+                    "\n",
+                    "\n",
+                );
+            }
+        }
     
         if (!isPrefix(currentString)) {
             // Remove visitedIds from the last iteration if the lastString's length is different than the currentString
@@ -60,7 +83,27 @@ export class WordSearch {
             // We know we used two more letters in the last attempt (and added those letters' ids to visitedIds) than we now have
             // and therefore must remove the last two visitedIds
             if (lastString.length !== currentString.length + 1) {
+
+                if (currentString.includes('piousnes') && currentString[0] !== 'i') {
+                    // console.log(
+                    //     "lastString and length: ",
+                    //     lastString,
+                    //     lastString.length,
+                    //     "\n",
+                    //     "currentString and length: ",
+                    //     currentString,
+                    //     currentString.length,
+                    //     "\n",
+                    //     "\n",
+                    // );
+                }
+
+                // console.log("VISITED IDS: ", visitedIds);
                 for (let i=0; i < lastString.length-1; i++) {
+                    // TODO Removing way too many?
+                    if (currentString.includes('piousnes') && currentString[0] !== 'i') {
+                        // console.log("i = " + i, " removing id: ", visitedIds.pop());
+                    }
                     visitedIds.pop();
                 }
             }
@@ -93,6 +136,29 @@ export class WordSearch {
 
             // @ts-ignore
             let nextSquare: ILetterState = this.getSquareById(nextSquareId);
+
+            if (currentString.includes('piousnes') && currentString[0] !== 'i') {
+                // console.log(
+                //     "current square val: ",
+                //     currentLetter,
+                //     "\n",
+                //     "nextSquare id: ",
+                //     nextSquare.id,
+                //     "nextSquare val: ",
+                //     nextSquare.val,
+                //     "\n",
+                //     "visitedIds.includes(nextSquare.id): ",
+                //     visitedIds.includes(nextSquare.id),
+                //     "\n",
+                //     "visitedIds: ",
+                //     visitedIds,
+                //     "\n",
+                //     "current string + next letter: ",
+                //     currentString + nextSquare.val,
+                //     "\n",
+                //     "\n",
+                // );
+            }
 
             this.traverseBoard(
                 nextSquare,
