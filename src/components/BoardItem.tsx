@@ -21,8 +21,10 @@ function BoardItem({ letter, setLetter }: IProps) {
         event.preventDefault();
         const { target } = event;
         const { value } = target;
-        const newValue = value[value.length - 1];
+        const newValue = value[value.length - 1] || '';
         
+        console.log(value);
+
         if (regex.test(newValue)) {
             setLetter({
                 id,

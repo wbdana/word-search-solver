@@ -59,6 +59,13 @@ export class WordSearch {
         //     console.log("--- HERE ---");
         // }
 
+        if (currentString === 'pious') {
+            console.log("--- HERE ---");
+            console.log(currentLetter);
+            console.log(visitedIds);
+            console.log("\n\n");
+        }
+
         if (currentString.length !== visitedIds.length + 1) {
             if (currentLetter.id === 23 && currentString.includes('piousnes') && currentString[0] !== 'i') {
                 console.log(
