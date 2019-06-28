@@ -41,7 +41,6 @@ export class WordSearch {
                 letter,
                 currentString,
                 visitedIds,
-                lastString,
             );
         });
 
@@ -49,20 +48,20 @@ export class WordSearch {
         return [...new Set(this.results)];
     };
 
-    traverseBoard(currentLetter: ILetterState, currentString: string, visitedIds: number[], lastString: string) {
+    traverseBoard(currentLetter: ILetterState, currentString: string, visitedIds: number[]) {
         if (currentLetter.val === '') {
             return;
         }
 
+        const lastString = currentString;
         currentString += currentLetter.val;
-        // visitedIds.push(currentLetter.id);
+        visitedIds.push(currentLetter.id);
 
-        if (currentString === 'piousn') {
-            console.log('--- XXX ---');
-            console.log(visitedIds);
+        let difference = currentString.length - lastString.length;
+
+        if (difference > 1) {
+            console.log("YES YES YES");
         }
-
-        let difference = currentString.length - visitedIds.length;
 
         if (currentString === 'p') {
             console.log("--- HERE ---");
@@ -135,44 +134,27 @@ export class WordSearch {
             console.log(visitedIds);
             console.log("\n\n");
         }
-
-        // if (currentString.length !== visitedIds.length + 1) {
-        //     if (currentLetter.id === 23 && currentString.includes('piousnes') && currentString[0] !== 'i') {
-        //         console.log(
-        //             "ERROR: difference: ",
-        //             difference,
-        //             "\n",
-        //             "currentString: ",
-        //             currentString,
-        //             "\n",
-        //             "visitedIds: ",
-        //             visitedIds,
-        //             "\n",
-        //             "\n",
-        //         );
-        //     }
-        // }
-
-        // if (lastString.length !== currentString.length + 1) {
-        //      for (let i=0; i < lastString.length-1; i++) {
-        //             // TODO Removing way too many?
-        //             // if (currentString.includes('piousnes') && currentString[0] !== 'i') {
-        //                 // console.log("i = " + i, " removing id: ", visitedIds.pop());
-        //             // }
-
-        //             visitedIds.pop();
-
-        //             // visitedIds = visitedIds.slice(0, visitedIds.length - 1);
-        //     }
-        // }
-
-        // if (difference !== 0 && currentString[0] === 'p') {
-        //     console.log('slicing');
-        //     visitedIds = visitedIds.slice(0, visitedIds.length - difference);
-        // }
-
     
         if (!isPrefix(currentString)) {
+            if (currentString[0] === 'p') {
+                console.log(
+                    "currentLetter.id: ",
+                    currentLetter.id,
+                    "\n",
+                    "lastString: ",
+                    lastString,
+                    "\n",
+                    "currentString: ",
+                    currentString,
+                    "\n",
+                    "difference: ",
+                    difference,
+                    "\n",
+                    "visitedIds: ",
+                    visitedIds,
+                    "\n\n",
+                );
+            }
             // Remove visitedIds from the last iteration if the lastString's length is different than the currentString
             // E.G., if lastString was 'atip'
             // and currentString is 'at'
@@ -181,33 +163,30 @@ export class WordSearch {
             // if (lastString.length !== currentString.length + 1) {
 
                 // Debugging
-                if (currentString.includes('piousnes') && currentString[0] !== 'i') {
-                    console.log(
-                        "lastString and length: ",
-                        lastString,
-                        lastString.length,
-                        "\n",
-                        "currentString and length: ",
-                        currentString,
-                        currentString.length,
-                        "\n",
-                        "\n",
-                    );
-                }
+                // if (currentString.includes('piousnes') && currentString[0] !== 'i') {
+                //     console.log(
+                //         "lastString and length: ",
+                //         lastString,
+                //         lastString.length,
+                //         "\n",
+                //         "currentString and length: ",
+                //         currentString,
+                //         currentString.length,
+                //         "\n",
+                //         "\n",
+                //     );
+                // }
                 // Debugging
 
-                // console.log("VISITED IDS: ", visitedIds);
-
-
                 for (let i=0; i < lastString.length-1; i++) {
-                //     // TODO Removing way too many?
-                //     // if (currentString.includes('piousnes') && currentString[0] !== 'i') {
-                //         // console.log("i = " + i, " removing id: ", visitedIds.pop());
-                //     // }
+                    // TODO Removing way too many?
+                    // if (currentString.includes('piousnes') && currentString[0] !== 'i') {
+                        // console.log("i = " + i, " removing id: ", visitedIds.pop());
+                    // }
 
                     visitedIds.pop();
 
-                //     // visitedIds = visitedIds.slice(0, visitedIds.length - 1);
+                    // visitedIds = visitedIds.slice(0, visitedIds.length - 1);
                 }
  
 
@@ -223,12 +202,13 @@ export class WordSearch {
             // }
 
             // visitedIds.pop();
+            // visitedIds = visitedIds.slice(0, visitedIds.length - difference);
             return;
-        };
+        }
 
         if (isWord(currentString) && !this.results.includes(currentString)) {
             this.results.push(currentString);
-        };
+        }
 
         let directions = Object.keys(currentLetter).filter(key => key !== "id" && key !== "val");
 
@@ -253,37 +233,10 @@ export class WordSearch {
             // @ts-ignore
             let nextSquare: ILetterState = this.getSquareById(nextSquareId);
 
-            if (currentString.includes('piousnes') && currentString[0] !== 'i') {
-                // console.log(
-                //     "current square val: ",
-                //     currentLetter,
-                //     "\n",
-                //     "nextSquare id: ",
-                //     nextSquare.id,
-                //     "nextSquare val: ",
-                //     nextSquare.val,
-                //     "\n",
-                //     "visitedIds.includes(nextSquare.id): ",
-                //     visitedIds.includes(nextSquare.id),
-                //     "\n",
-                //     "visitedIds: ",
-                //     visitedIds,
-                //     "\n",
-                //     "current string + next letter: ",
-                //     currentString + nextSquare.val,
-                //     "\n",
-                //     "\n",
-                // );
-            }
-
-            visitedIds.push(currentLetter.id);
-
-
             this.traverseBoard(
                 nextSquare,
                 currentString,
                 visitedIds,
-                currentString,
             );
         });
     };

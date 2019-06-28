@@ -51,6 +51,6 @@ export const StyledBoardItemInput = styled.input<IBoardItemProps>`
     width: 100%;
 
     &:focus {
-        outline: none;
+        outline: ${props => props.value === '' ? '3px dashed white' : 'none'};
     };
 `;
